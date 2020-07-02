@@ -15,7 +15,7 @@ class Stack{
          array_unshift($this->stack, $item);
         }
         else{
-            throw new \http\Exception\RuntimeException('Stack is full');
+            die('Stack is full');
         }
 
     }
@@ -24,7 +24,7 @@ class Stack{
     {
         if ($this->isEmpty()) {
 
-            throw new  \http\Exception\RuntimeException('Stack is empty');
+            die('Stack is empty');
         } else{
           return array_shift($this->stack);
         }

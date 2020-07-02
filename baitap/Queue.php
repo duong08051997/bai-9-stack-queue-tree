@@ -1,42 +1,46 @@
 <?php
-class Element{
+class Node{
     public $value;
     public $next;
-
+    public function __construct($value)
+    {
+        $this->value = $value;
+    }
 
 }
 class Queue{
-    private $font = null;
-    private $back =null;
+   private $queue;
+   public function __construct()
+   {
+       $this->queue = [];
+   }
+
     public function isEmpty()
     {
-        return $this->font == null;
+        return empty($this->queue);
     }
 
     public function enqueue($value)
     {
-        $oldBack = $this->back;
-        $this->back =new Element();
-        $this->back->$value = $value;
-        if ($this->isEmpty()) {
+        array_push($this->queue,$value);
 
-            $this->font = $this->back;
-        }else{
-            $oldBack->next = $this->back;
-        }
-        echo '<pre>';
-        var_dump($oldBack);
     }
 
     public function dequeue()
     {
+        $arr = [];
         if ($this->isEmpty()) {
 
             return null;
         }
-        $removedValue = $this->font->value;
-        $this->font = $this->font->next;
-        return $removedValue;
+       $result = array_pop($this->queue);
+        return array_push($arr,$result);
+
+    }
+    public function display()
+    {
+
+return $this->queue;
     }
 
 }
@@ -47,7 +51,8 @@ $queue->enqueue(2);
 $queue->enqueue(3);
 $queue->enqueue(4);
 $queue->enqueue('end');
+print_r($queue->dequeue());
+echo '<pre>';
+print_r($queue->display());
 
-//while (!$queue->isEmpty()){
-//    echo $queue->dequeue();
-//}
+
