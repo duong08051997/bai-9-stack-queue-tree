@@ -1,4 +1,6 @@
+
 <?php
+
 class Binary{
     public $stack;
     public $size;
@@ -8,16 +10,15 @@ class Binary{
         $this->stack = [];
     }
      public function changeBinary($number){
-        $arr = [];
-        while ($number > 0){
-            $numberOne = (int)($number/2);
+        while (floor($number ) > 0){
             $surplus = $number % 2;
-            $number = $numberOne;
-            array_unshift($arr,$surplus);
+            $number =$number/2;
+            array_unshift($this->stack,$surplus);
         }
-        return implode('',$arr);
+        return implode('',$this->stack);
      }
-
 }
-$number = new Binary();
-echo $number->changeBinary(10);
+
+$binary = new Binary();
+echo $binary->changeBinary(11);
+
